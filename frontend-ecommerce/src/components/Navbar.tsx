@@ -1,5 +1,4 @@
-
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <nav>
         <div>LOGO</div>
@@ -9,7 +8,8 @@ export const Navbar = () => {
             <li>Kids</li>
             <li>New & Trending</li>
         </ul>
-    
     </nav>
   )
 }
+
+export default Navbar;
