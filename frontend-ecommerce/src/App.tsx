@@ -1,4 +1,5 @@
-import  Navbar  from "./components/Navbar";
+import LandingPage from './pages/LandingPage';
+import Navbar from './components/Navbar';
 import { useState , useEffect } from 'react';
 
 
@@ -9,7 +10,9 @@ function App() {
   }, [])
   return (
     <>
-      
+      <LandingPage/>
+        
+
     </>
   )
 }
