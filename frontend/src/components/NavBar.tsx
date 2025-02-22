@@ -65,9 +65,11 @@ export const NavBar = () => {
         )}
       </nav> 
       {loginOpen && (
-        <div className=" bg-gray-500 bg-opacity-50 flex justify-center items-center" onClick={closeLogin}>
+        <div className="bg-gray-500 bg-opacity-50 flex justify-center items-center" onClick={closeLogin}>
+          <div onClick={(e) => e.stopPropagation()}>
             <Login />
           </div>
+        </div>
       )}
     </>
   );
