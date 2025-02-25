@@ -38,9 +38,9 @@ function Login() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
-            <Label>Email</Label>
+            <Label className="mt-4 mb-2 block">Email</Label>
             <Input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-            <Label>Password</Label>
+            <Label className="mt-4 mb-2 block">Password</Label>
             <div className="relative">
               <Input type={showPassword ? "text" : "password"} name="password" placeholder="Password" onChange={handleChange} required />
               <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" onClick={() => setShowPassword(!showPassword)}>
@@ -48,7 +48,7 @@ function Login() {
               </button>
             </div>
             <div className="flex justify-center mt-4">
-              <Button type="submit">Login</Button>
+              <Button type="submit" className="my-5 block">Login</Button>
             </div>
             <div className="flex flex-row items-center justify-center mt-4 space-x-4">
               <FaApple size={'20px'} />

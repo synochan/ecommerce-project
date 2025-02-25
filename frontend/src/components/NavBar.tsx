@@ -30,15 +30,15 @@ export const NavBar = () => {
 
   return (
     <>
-      <nav className="navbar bg-primary w-full h-12">
+      <nav className="navbar bg-primary w-full h-12 py-7">
         <div className="flex justify-between items-center h-full px-4 sm:px-8 md:px-32">
-          <a href="/" className="text-white text-lg font-bold">LOGO</a>
+          <a href="/" className="text-[#CCC5B9] text-lg font-bold font-montserrat font-normal">LOGO</a>
           <div className="hidden md:flex space-x-4">
             <ul className="flex flex-row space-x-4 md:space-x-20">
-              <li className="text-white text-sm font-semibold">MEN</li>
-              <li className="text-white text-sm font-semibold">WOMEN</li>
-              <li className="text-white text-sm font-semibold">KIDS</li>
-              <li className="text-white text-sm font-semibold">NEW & TRENDING</li>
+              <li className="text-[#CCC5B9] text-sm font-normal font-montserrat">MEN</li>
+              <li className="text-[#CCC5B9] text-sm font-normal font-montserrat">WOMEN</li>
+              <li className="text-[#CCC5B9] text-sm font-normal font-montserrat">KIDS</li>
+              <li className="text-[#CCC5B9] text-sm font-normal font-montserrat">NEW & TRENDING</li>
             </ul>
           </div>
           <div className="flex space-x-2 sm:space-x-4 items-center">
@@ -46,7 +46,7 @@ export const NavBar = () => {
               <input
                 type="text"
                 placeholder="Search"  
-                className="text-primary text-sm font-semibold bg-white rounded-[10px] h-8 border-white pl-4 w-24 sm:w-40"
+                className="text-primary text-sm font-semibold bg-white rounded-[20px] h-8 border-white pl-4 w-24 sm:w-40"
               />
               <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary">
                 <FaMagnifyingGlass size={'20px'} />

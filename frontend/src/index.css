@@ -8,6 +8,7 @@
     --primary: rgba(37, 36, 34, 1);
     --secondary: rgba(64, 61, 57, 1);  
 
+
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
@@ -68,5 +69,11 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-montserrat;
   }
 }

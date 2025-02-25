@@ -3,7 +3,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { NavBar } from "./components/NavBar";
 
-
 function App() {
 
   return (  
