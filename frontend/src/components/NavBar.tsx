@@ -75,12 +75,9 @@ export const NavBar = () => {
         )}
       </nav> 
       {loginOpen && (
-        <div className="bg-gray-500 bg-opacity-50 flex justify-center items-center" onClick={closeLogin}>
+        <div className="bg-gray-500 bg-opacity-50 w-auto h-auto flex justify-center items-center" onClick={closeLogin}>
           <div onClick={(e) => e.stopPropagation()}>
             <Login />
-            <p className="text-white text-sm font-semibold mt-2">
-              Don't have an account? <span className="text-blue-500 cursor-pointer" onClick={toggleRegister}>Sign Up</span>
-            </p>
           </div>
         </div>
       )}

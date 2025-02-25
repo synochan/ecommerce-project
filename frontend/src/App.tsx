@@ -5,11 +5,10 @@ import { NavBar } from "./components/NavBar";
 
 
 function App() {
-  const [view, setView] = useState("login");
 
   return (  
     <>
-    <Register></Register>
+    <NavBar />
     </>
   );
 }
