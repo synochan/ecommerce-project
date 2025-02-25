@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { FaMagnifyingGlass, FaCartShopping, FaUser, FaBars, FaXmark } from "react-icons/fa6";
 import Login from "./Login";
-
+import Register from "./Register";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -14,10 +15,18 @@ export const NavBar = () => {
   const toggleLogin = () => {
     setLoginOpen(!loginOpen);
   };
+
+  const toggleRegister = () => {
+    setRegisterOpen(!registerOpen);
+  };
+
   const closeLogin = () => {
     setLoginOpen(false);
   };
 
+  const closeRegister = () => {
+    setRegisterOpen(false);
+  };
 
   return (
     <>
@@ -69,6 +78,16 @@ export const NavBar = () => {
         <div className="bg-gray-500 bg-opacity-50 flex justify-center items-center" onClick={closeLogin}>
           <div onClick={(e) => e.stopPropagation()}>
             <Login />
+            <p className="text-white text-sm font-semibold mt-2">
+              Don't have an account? <span className="text-blue-500 cursor-pointer" onClick={toggleRegister}>Sign Up</span>
+            </p>
+          </div>
+        </div>
+      )}
+      {registerOpen && (
+        <div className="bg-gray-500 bg-opacity-50 flex justify-center items-center" onClick={closeRegister}>
+          <div onClick={(e) => e.stopPropagation()}>
+            <Register />
           </div>
         </div>
       )}

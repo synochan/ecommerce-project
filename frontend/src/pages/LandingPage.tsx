@@ -4,8 +4,7 @@ import  Register  from "@/components/Register"
 export const LandingPage = () => {
   return (
     <div>
-      <NavBar />
-      
+      <Register />
     </div>
   )
 }
