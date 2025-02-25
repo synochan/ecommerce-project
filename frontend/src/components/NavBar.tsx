@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaMagnifyingGlass, FaCartShopping, FaUser, FaBars, FaXmark } from "react-icons/fa6";
-import { Login } from "./Login";
+import Login from "./Login";
+
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,14 +14,14 @@ export const NavBar = () => {
   const toggleLogin = () => {
     setLoginOpen(!loginOpen);
   };
-
   const closeLogin = () => {
     setLoginOpen(false);
   };
 
+
   return (
     <>
-      <nav className="navbar bg-primary w-full h-14">
+      <nav className="navbar bg-primary w-full h-12">
         <div className="flex justify-between items-center h-full px-4 sm:px-8 md:px-32">
           <a href="/" className="text-white text-lg font-bold">LOGO</a>
           <div className="hidden md:flex space-x-4">

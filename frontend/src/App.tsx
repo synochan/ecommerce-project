@@ -1,12 +1,17 @@
-import { LandingPage } from './pages/LandingPage'
+import { useState } from "react";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import { NavBar } from "./components/NavBar";
+
 
 function App() {
+  const [view, setView] = useState("login");
 
-  return (
+  return (  
     <>
-      <LandingPage />
+    <NavBar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

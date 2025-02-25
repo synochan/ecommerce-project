@@ -1,69 +1,44 @@
 import { useState } from "react";
-import { FaFacebook, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa6";
+import axios from "axios";
 
-export const Register = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+function Register() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    password2: "",
+  });
+  const [message, setMessage] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/register/", formData);
+      setMessage(response.data.message);
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        setMessage("Registration failed. " + JSON.stringify(error.response.data));
+      } else {
+        setMessage("Registration failed. An unknown error occurred.");
+      }
+    } 
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-96 h-auto bg-secondary border-2 rounded-[10px] shadow-lg">
-        <div className="font-bold text-left mt-4 ml-4">LOGO</div>
-        <form className="flex flex-col space-y-2 p-4">
-          <div className="text-sm font-semibold">Email</div>
-          <input
-            placeholder="Email"
-            type="email"
-            className="pl-3 h-8 rounded-[8px] border-2 shadow-sm"
-          />
-          <div className="text-sm font-semibold">Password</div>
-          <div className="relative">
-            <input
-              placeholder="Password"
-              type={showPassword ? "text" : "password"}
-              className="pl-3 h-8 rounded-[8px] w-full pr-10 border-2 shadow-sm"
-            />
-            <div
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <FaEye /> : <FaEyeSlash />}
-            </div>
-          </div>
-          <div className="text-sm font-semibold">Confirm Password</div>
-          <div className="relative">
-            <input
-              placeholder="Confirm Password"
-              type={showConfirmPassword ? "text" : "password"}
-              className="pl-3 h-8 rounded-[8px] w-full pr-10 border-2 shadow-sm"
-            />
-            <div
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
-              onClick={toggleConfirmPasswordVisibility}
-            >
-              {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
-            </div>
-          </div>
-            <button className="bg-primary h-8 rounded-[10px] text-white mt-5">
-            Register
-            </button>
-        </form>
-        <a href="/" className="flex justify-center items-center text-gray-400 text-sm mt-2">
-          Register with
-        </a>
-        <div className="flex justify-center items-center space-x-4 pt-2 pb-4">
-          <FaFacebook size={"20px"} />
-          <FaGoogle size={"20px"} />
-        </div>
-      </div>
+    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
+      <h2 className="text-2xl mb-4">Register</h2>
+      <form onSubmit={handleRegister}>
+        <input type="email" name="email" placeholder="Email" className="w-full p-2 mb-2 border rounded" onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Password" className="w-full p-2 mb-2 border rounded" onChange={handleChange} required />
+        <input type="password" name="password2" placeholder="Confirm Password" className="w-full p-2 mb-2 border rounded" onChange={handleChange} required />
+        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Register</button>
+      </form>
+      {message && <p className="mt-4 text-center">{message}</p>}
     </div>
   );
-};
+}
+
+export default Register;
