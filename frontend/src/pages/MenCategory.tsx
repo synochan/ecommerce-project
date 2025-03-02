@@ -1,7 +1,6 @@
 import { NavBar } from "@/components/NavBar"
 
 
-
 function MenCategory() {
     return(
         <NavBar />

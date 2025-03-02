@@ -4,6 +4,7 @@ import { LandingPage } from "@/pages/LandingPage";
 import { Route, Routes } from "react-router-dom";
 import { ProductsPage } from "@/pages/ProductsPage";
 import { ProductView } from "@/components/ProductView";
+import { NotFound } from "@/pages/NotFound";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:productId" element={<ProductView />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
     <Footer />
