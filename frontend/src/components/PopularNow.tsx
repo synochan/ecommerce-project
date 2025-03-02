@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { ProductCard } from "./ProductCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export function PopularNow() {
   const popularProducts = [
@@ -37,9 +38,9 @@ export function PopularNow() {
       {/* Header */}
       <div className="flex justify-between px-4 items-center mb-4">
         <h2 className="text-xl font-bold">Popular Now</h2>
-        <a href="/products" className="text-blue-500 text-sm">
+        <Link to="/products" className="text-blue-500 text-sm">
           View All
-        </a>
+        </Link>
       </div>
 
       {/* Carousel */}

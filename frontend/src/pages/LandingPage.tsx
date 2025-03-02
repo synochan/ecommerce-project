@@ -1,10 +1,13 @@
-import { NavBar } from "@/components/NavBar"
-import  Register  from "@/components/Register"
+
+import { ProductCarousel } from "@/components/ProductCarousel"
+import { PopularNow } from "@/components/PopularNow"
+
 
 export const LandingPage = () => {
   return (
     <div>
-      <Register />
+      <ProductCarousel />
+      <PopularNow />
     </div>
   )
 }

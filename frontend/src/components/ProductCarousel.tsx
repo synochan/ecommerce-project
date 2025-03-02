@@ -4,10 +4,11 @@ import { useRef, useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ProductCard } from "./ProductCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export function ProductCarousel() {
   const newArrivals = [
-    { title: "Product 1", subtitle: "Men's Shoes", price: "$100.00" },
+    { title: "Product 56", subtitle: "Men's Shoes", price: "$100.00" },
     { title: "Product 2", subtitle: "Men's Shoes", price: "$100.00" },
     { title: "Product 3", subtitle: "Men's Shoes", price: "$100.00" },
     { title: "Product 4", subtitle: "Men's Shoes", price: "$100.00" },
@@ -49,12 +50,12 @@ export function ProductCarousel() {
             <TabsTrigger value="best">Best Sellers</TabsTrigger>
           </TabsList>
         </Tabs>
-        <a
-          href="/products"
+        <Link
+          to="/products"
           className="text-sm font-medium text-gray-700 hover:underline"
         >
           View All
-        </a>
+        </Link>
       </div>
 
       <Tabs defaultValue="new">
