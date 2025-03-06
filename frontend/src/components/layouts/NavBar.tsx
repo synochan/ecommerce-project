@@ -8,9 +8,9 @@ import {
   FaBars,
   FaXmark,
 } from "react-icons/fa6";
-import Login from "./Login";
-import Register from "./Register";
-import { ProfileModal } from "./ProfileModal";
+import Login from "../product/Login";
+import Register from "../auth/Register";
+import { ProfileModal } from "../auth/ProfileModal";
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
