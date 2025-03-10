@@ -7,9 +7,12 @@ export default {
   ],
   theme: {
   	extend: {
-		fontFamily: {
-			montserrat: ['Montserrat', 'sans-serif'],
-		},
+  		fontFamily: {
+  			montserrat: [
+  				'Montserrat',
+  				'sans-serif'
+  			]
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
