@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Layout from '../Layout/Layout'
+
+
 
 export const Landing = () => {
 const [username, setUsername] = useState("")
@@ -57,7 +60,17 @@ const [username, setUsername] = useState("")
   }
   return (
     <div>
-      {isLoggedIn ? (
+      <Layout>
+        
+      </Layout>
+    </div>
+  )
+}
+
+
+
+/*
+{isLoggedIn ? (
         <>
       <h2>Hi, {username}. Thanks for loggin in!</h2>
       <button onClick={handleLogout}>Logout</button>
@@ -65,7 +78,4 @@ const [username, setUsername] = useState("")
       ):(
       <h2>Please Login</h2>
     )}
-    </div>
-  )
-}
-
+*/

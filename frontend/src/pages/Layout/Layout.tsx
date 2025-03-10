@@ -1,8 +1,17 @@
 import React from 'react'
+import NavBar from './NavBar'
+import HeroSection from './HeroSection'
+import Footer from './Footer'
+import Profile from '@/auth/Profile'
+
 
 const Layout = () => {
   return (
-    <h1>Layout</h1>
+    <>
+      <NavBar />
+      <HeroSection />
+      <Footer />
+    </>
   )
 }
 
