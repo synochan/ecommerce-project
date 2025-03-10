@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Landing } from "./pages/Landing";
-import Layout from "./pages/Layout";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import { Landing } from "./pages/pages/Landing";
+import Layout from "./pages/Layout/Layout";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
 
 
 
