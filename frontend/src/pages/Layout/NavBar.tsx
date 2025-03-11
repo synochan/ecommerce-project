@@ -14,6 +14,8 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
+  
+
   return (
     <nav className="bg-black text-gray-300 py-4 px-6 flex items-center justify-between relative">
       <div className="text-lg font-semibold">LOGO</div>

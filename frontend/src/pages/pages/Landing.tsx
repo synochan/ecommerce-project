@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Layout from '../Layout/Layout'
-
+import api from '@/api/api'
 
 
 export const Landing = () => {
@@ -18,7 +18,7 @@ const [username, setUsername] = useState("")
               "Authorization":`Bearer ${token}`
             }
           };
-          const response = await axios.get("http://127.0.0.1:8000/api/user/", config)
+          const response = await api.get("/api/user/", config)
           setLoggedIn(true)
           setUsername(response.data.username)
         }

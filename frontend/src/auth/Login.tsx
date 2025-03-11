@@ -4,8 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import React, { useState, ChangeEvent } from 'react';
-import axios, { AxiosError } from 'axios';  
+import React, { useState, ChangeEvent, } from 'react';
+import axios from 'axios';  
+import api from "@/api/api";
+import { REFRESH_TOKEN, ACCESS_TOKEN } from "@/api/constants";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
@@ -20,6 +23,7 @@ export default function Login() {
       [e.target.name]: e.target.value,
     });
   };
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -32,12 +36,13 @@ export default function Login() {
         setIsLoading(true);
   
         try{
-            const response = await axios.post("http://127.0.0.1:8000/api/login/", formData)
+            const response = await api.post("/api/login/", formData)
             console.log("Success!", response.data)
             setSuccessMessage("Login Successful!");
             setError(null);
-            localStorage.setItem("accessToken", response.data.tokens.access);
-            localStorage.setItem("refreshToken", response.data.tokens.refresh);
+            localStorage.setItem(ACCESS_TOKEN, response.data.tokens.access);
+            localStorage.setItem(REFRESH_TOKEN, response.data.tokens.refresh);
+            navigate("/");
         } catch(err: unknown) {
             if (axios.isAxiosError(err) && err.response) {
                 console.log("Error during Login!", err.response.data);
@@ -63,7 +68,6 @@ export default function Login() {
     <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <Card className="relative w-[400px] p-6 bg-white shadow-lg rounded-lg">
         <button className="absolute top-3 right-3 text-gray-500">
-          <IoClose size={20} />
         </button>
         <h1 className="text-xl font-bold mb-6">LOGO</h1>
         <form onSubmit={handleSubmit}>

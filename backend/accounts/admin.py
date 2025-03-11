@@ -10,3 +10,4 @@ class CustomUserAdmin(UserAdmin):
     form = CustomerUserChangeForm
 
     model = CustomUser
+

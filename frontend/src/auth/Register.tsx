@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Checkbox } from "@/components/ui/checkbox";
+import api from '@/api/api';
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ export default function Register() {
         setError(null); // Clear previous errors
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/register/', formData);
+            const response = await api.post('/api/register/', formData);
             console.log(response.data);
             setSuccessMessage("Registration successful!");
             navigate('/login'); // Redirect to login page
