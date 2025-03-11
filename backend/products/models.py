@@ -2,7 +2,10 @@ from django.db import models
 from django.conf import settings
 import uuid
 
-# Category Model
+from django.db import models
+import cloudinary
+import cloudinary.models
+
 class Category(models.Model):
     name = models.CharField(unique=True, max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -11,12 +14,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-# Product Model
 class Product(models.Model):
     name = models.CharField(unique=True, max_length=255)
-    description = models.TextField(default="No description.")
+    description = models.TextField(default="No description available")
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
+    image = cloudinary.models.CloudinaryField('image', blank=True, null=True)  # ✅ Using Cloudinary
     category = models.ManyToManyField(Category, related_name="products")
     available = models.BooleanField(default=True)
     featured = models.BooleanField(default=False)
@@ -25,6 +27,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # Review Model
 class Review(models.Model):

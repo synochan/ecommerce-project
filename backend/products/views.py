@@ -7,16 +7,18 @@ from .serializers import (
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 # Category ViewSet
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+from rest_framework import viewsets
+from .models import Product, Category
+from .serializers import ProductSerializer, CategorySerializer
 
-# Product ViewSet
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
 
 # Review ViewSet
 class ReviewViewSet(viewsets.ModelViewSet):

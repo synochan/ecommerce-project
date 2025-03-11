@@ -15,6 +15,11 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+    def get_image_url(self, obj):
+        if obj.image:
+            return obj.image.url  # ✅ Cloudinary provides a direct URL
+        return None
+
 # Review Serializer
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
