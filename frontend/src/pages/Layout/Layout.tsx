@@ -10,7 +10,6 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <NavBar />
       <HeroSection />
       {children}  {/* Allow child components to be rendered here */}
       <Footer />
