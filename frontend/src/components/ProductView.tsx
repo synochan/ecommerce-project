@@ -27,9 +27,14 @@ const ProductView = () => {
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart({ ...product, selectedSize });
+      addToCart({ 
+        ...product, 
+        selectedSize, 
+        quantity: 1 // Ensure quantity is set
+      });
     }
   };
+  
 
   if (!product) {
     return (
