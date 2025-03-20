@@ -11,8 +11,6 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <HeroSection />
-      {children}  {/* Allow child components to be rendered here */}
-      <Footer />
     </>
   );
 };

@@ -2,6 +2,7 @@ import { Search, ShoppingCart, User, ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileModal from "@/auth/Profile";
+import { useProductContext } from "@/context/ProductContext"; // Import ProductContext
 
 const categories: { [key: string]: string[] } = {
   Men: ["T-Shirts", "Jeans", "Jackets", "Shoes", "Accessories", "Suits", "Sweaters", "Shorts", "Sportswear", "Casual Wear"],
@@ -12,9 +13,13 @@ const categories: { [key: string]: string[] } = {
 const trendingCategories = ["Best Sellers", "New Arrivals", "Seasonal Picks", "Streetwear", "Luxury", "Casual", "Athleisure", "Workwear", "Eco-Friendly", "Limited Edition"];
 
 export default function Navbar() {
+  const { cart } = useProductContext(); // Get cart data from context
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+
+  // Calculate total items in the cart
+  const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="bg-black text-gray-300 py-4 px-6 flex items-center justify-between relative">
@@ -90,8 +95,15 @@ export default function Navbar() {
           <Search className="w-5 h-5 text-white" />
         </div>
 
-        {/* Cart Icon */}
-        <ShoppingCart className="w-6 h-6 cursor-pointer hover:text-white" />
+        {/* Cart Icon with Badge */}
+        <Link to="/cart" className="relative">
+          <ShoppingCart className="w-6 h-6 cursor-pointer hover:text-white" />
+          {totalCartItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
+              {totalCartItems}
+            </span>
+          )}
+        </Link>
 
         {/* Profile Icon & Modal */}
         <div className="relative">

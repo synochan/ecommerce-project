@@ -5,25 +5,30 @@ import ProductCarousel from "@/components/ProductCarousel";
 
 const ProductView = () => {
   const { id } = useParams<{ id: string }>();
-  const { products } = useProductContext();
+  const { products, addToCart } = useProductContext();
   const navigate = useNavigate();
-  const navigationType = useNavigationType(); // Detect navigation type
+  const navigationType = useNavigationType();
 
   const product = products.find((p) => String(p.id) === id);
   const [zoomPosition, setZoomPosition] = useState({ x: "50%", y: "50%" });
   const [isZoomed, setIsZoomed] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
 
-  // Reset scroll position on navigation (fixes "Go Back" scroll issue)
   useLayoutEffect(() => {
     if (navigationType === "PUSH") {
-      window.scrollTo({ top: 0, behavior: "instant" }); // Force reset on new navigation
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [id, navigationType]);
 
-  // Go Back button handler
   const handleGoBack = () => {
-    window.scrollTo({ top: 0, behavior: "instant" }); // Ensure smooth transition
-    setTimeout(() => navigate(-1), 200); // Delay navigation to avoid scroll jump
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setTimeout(() => navigate(-1), 200);
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart({ ...product, selectedSize });
+    }
   };
 
   if (!product) {
@@ -52,7 +57,6 @@ const ProductView = () => {
         </button>
 
         <div className="flex flex-col sm:flex-row gap-10">
-          {/* Product Image with Zoom Effect */}
           <div
             className="w-full sm:w-1/2 relative overflow-hidden border border-gray-400 rounded-lg"
             onMouseMove={(e) => {
@@ -75,15 +79,36 @@ const ProductView = () => {
             />
           </div>
 
-          {/* Product Details */}
           <div className="w-full sm:w-1/2 space-y-6">
             <h1 className="text-3xl font-bold">{product.title}</h1>
             <p className="text-gray-600 text-sm sm:text-base mt-1">{product.category}</p>
             <p className="text-2xl font-semibold mt-2 text-gray-900">${product.price}</p>
             <p className="text-gray-700 text-base leading-relaxed">{product.description}</p>
 
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="mt-4">
+                <p className="text-gray-700 font-semibold mb-2">Select Size:</p>
+                <div className="flex gap-2">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      className={`px-4 py-2 border rounded-lg ${
+                        selectedSize === size ? "bg-black text-white" : "bg-gray-200"
+                      }`}
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-8 space-y-4">
-              <button className="w-full bg-black text-white py-3 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-900 transition">
+              <button
+                onClick={handleAddToCart}
+                className="w-full bg-black text-white py-3 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-900 transition"
+              >
                 🛒 Add to Cart
               </button>
               <button className="w-full bg-gray-800 text-white py-3 rounded-lg text-base hover:bg-gray-700 transition">
@@ -94,7 +119,6 @@ const ProductView = () => {
         </div>
       </div>
 
-      {/* Featured Products */}
       <div className="mt-20 mb-10">
         <h3 className="text-xl">Featured Products</h3>
         <ProductCarousel category="Men" />

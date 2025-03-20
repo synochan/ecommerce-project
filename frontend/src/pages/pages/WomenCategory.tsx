@@ -2,23 +2,25 @@ import { useState } from "react";
 import ProductList from "@/components/ProductList";
 
 const subcategories = [
-  "DRESSES", "TOPS", "JEANS", "SKIRTS", "SHOES",
-  "HANDBAGS", "ACCESSORIES", "SWEATERS", "OUTERWEAR", "SPORTSWEAR"
+  "Dresses", "Tops", "Jeans", "Skirts", "Shoes",
+  "Handbags", "Accessories", "Sweaters", "Outerwear", "Sportswear"
 ];
 
 const WomenCategory = () => {
-  const [activeTab, setActiveTab] = useState("DRESSES");
+  const [activeTab, setActiveTab] = useState(subcategories[0]);
 
   return (
     <div className="p-4 mx-auto max-w-[1400px]">
       {/* Tabs */}
-      <div className="overflow-x-auto whitespace-nowrap flex justify-center gap-3 mb-5 p-2 border-b border-gray-300 scrollbar-hide">
+      <div className="flex flex-wrap justify-center gap-3 mb-5 p-2 border-b border-gray-300">
         {subcategories.map((subcategory) => (
           <button
             key={subcategory}
-            className={`flex-shrink-0 px-4 py-2 border rounded-md transition text-sm md:text-base ${
-              activeTab === subcategory ? "text-white bg-black" : "hover:bg-gray-200"
-            }`}
+            className={`px-4 py-2 rounded-md text-sm md:text-base transition-all duration-300 
+              ${activeTab === subcategory 
+                ? "bg-black text-white font-normal shadow-md" 
+                : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+              }`}
             onClick={() => setActiveTab(subcategory)}
           >
             {subcategory}
